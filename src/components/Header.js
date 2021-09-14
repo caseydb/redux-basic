@@ -1,19 +1,22 @@
 import classes from './Header.module.css';
 
+import { useDispatch} from 'react-redux';
+
 const Header = () => {
+
+    const dispatch = useDispatch()
+  
+    const isAuthHandler = () => {
+      dispatch({type: 'logout'})
+    };
+  
   return (
     <header className={classes.header}>
-      <h1>Redux Auth</h1>
+      <h1>Enspiral Dev Academy</h1>
       <nav>
         <ul>
           <li>
-            <a href='/'>My Products</a>
-          </li>
-          <li>
-            <a href='/'>My Sales</a>
-          </li>
-          <li>
-            <button>Logout</button>
+            <button onClick={isAuthHandler}>Logout</button>
           </li>
         </ul>
       </nav>

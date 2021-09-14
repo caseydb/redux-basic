@@ -1,38 +1,39 @@
-import { Component } from 'react';
-import { useSelector, useDispatch, connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import classes from './Counter.module.css';
 
 const Counter = () => {
   const dispatch = useDispatch()
   const counter = useSelector(state => state.counter)
-  const show = useSelector(state => state.showCounter)
+  const toggle = useSelector(state => state.showCounter)
   
-  const incrementHanlder = () => {
+  const incrementHandler = () => {
     dispatch({type: 'increment'})
   }
-  const decrementHanlder = () => {
+  const decrementHandler = () => {
     dispatch({type: 'decrement'})
   }
   const increaseHandler = () => {
-    dispatch({type: 'increase', amount: 10})
+    dispatch({type: 'increase', amount: 20})
   }
-  const toggleCounterHandler = () => {
+  const toggleHandler = () => {
     dispatch({type: 'toggle'})
-  };
+  }
   
   return (
     <main className={classes.counter}>
-      <h1>Redux Counter (V2)!</h1>
-      { show && <div>
+      <h1>Roa 2021</h1>
+      {toggle && 
+      <div>
         <div className={classes.value}>{counter}</div>
         <div>
-          <button onClick={incrementHanlder}>increment</button>
+          <button onClick={incrementHandler}>increment</button>
           <button onClick={increaseHandler}>increase by 10</button>
-          <button onClick={decrementHanlder}>decrement</button>
+          <button onClick={decrementHandler}>decrement</button>
         </div>
-      </div> }
-      <button onClick={toggleCounterHandler}>Toggle Counter</button>
+      </div>}
+      <button onClick={toggleHandler}>Toggle Counter</button>
     </main>
+    
   );
 };
 
@@ -40,10 +41,10 @@ export default Counter;
 
 
 // class Counter extends Component {
-//   incrementHanlder() {
+//   incrementHandler() {
 //     this.props.increment();
 //   }
-//   decrementHanlder() {
+//   decrementHandler() {
 //     this.props.decrement();
 //   }
 //   toggleCounterHandler() {}
@@ -54,8 +55,8 @@ export default Counter;
 //       <h1>Redux Counter</h1>
 //       <div className={classes.value}>{this.props.counter}</div>
 //       <div>
-//         <button onClick={this.incrementHanlder.bind(this)}>increment</button>
-//         <button onClick={this.decrementHanlder.bind(this)}>decrement</button>
+//         <button onClick={this.incrementHandler.bind(this)}>increment</button>
+//         <button onClick={this.decrementHandler.bind(this)}>decrement</button>
 //       </div>
 //       <button onClick={this.toggleCounterHandler}>Toggle Counter</button>
 //     </main>
